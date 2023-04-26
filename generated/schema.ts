@@ -72,6 +72,19 @@ export class ActiveItem extends Entity {
     this.set("seller", Value.fromBytes(value));
   }
 
+  get nftAddress(): Bytes {
+    let value = this.get("nftAddress");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set nftAddress(value: Bytes) {
+    this.set("nftAddress", Value.fromBytes(value));
+  }
+
   get tokenId(): BigInt {
     let value = this.get("tokenId");
     if (!value || value.kind == ValueKind.NULL) {
